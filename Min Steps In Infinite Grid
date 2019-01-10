@@ -1,0 +1,15 @@
+int Solution::coverPoints(vector<int> &A, vector<int> &B) {
+    vector<int>::iterator itr1,itr2;
+    itr1=A.begin();itr2=B.begin();
+    int count=0;
+    for(int i=1;i<A.size();i++)
+    {
+        int a=A[i];
+        int b=B[i];
+        count+=max(abs(*itr1-a),abs(*itr2-b));
+        itr1++;
+        itr2++;
+    }
+    return count;
+}
+
