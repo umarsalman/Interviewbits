@@ -1,0 +1,15 @@
+int Solution::maxArr(vector<int> &a) {
+    int i,j,k,maxi=0,calc,calc1,calc2;
+    vector<int> b,c;
+
+    for(i=0;i<a.size();i++)
+    {
+       b.push_back(a[i]+i);
+       c.push_back(a[i]-i);
+    }
+    calc1=(*(max_element(b.begin(),b.end()))-*(min_element(b.begin(),b.end())));
+    calc2=(*(max_element(c.begin(),c.end()))-*(min_element(c.begin(),c.end())));
+    maxi=max(calc1,calc2);
+    return maxi;
+}
+
