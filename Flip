@@ -1,0 +1,34 @@
+vector<int> Solution::flip(string A) {
+    vector<int> b(A.size());
+    vector<int> c;
+    for(int i=0;i<A.size();i++)
+    {
+        if(A[i]=='0')
+        b[i]=1;
+        else
+        b[i]=-1;
+    }
+    int max_so_far=0;int max_ending_here=0,l=0,q=-9;
+    c.clear();
+    for(int i=0;i<b.size();i++)
+    {
+        if(max_ending_here+b[i]<0)
+        {
+            max_ending_here=0;
+            l=i+1;
+        }
+        else
+        max_ending_here+=b[i];
+        if(max_so_far<max_ending_here)
+        {
+            max_so_far=max_ending_here;
+            c.clear();
+            c.push_back(l+1);
+            c.push_back(i+1);
+            
+        }
+        
+    }
+    return c;
+}
+
