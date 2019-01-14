@@ -1,0 +1,43 @@
+vector<int> Solution::maxset(vector<int> &a) {
+    long long int max_so_far=0,max_end_here=0;int l=0;vector<int> b;int countt=0,flag=0;
+    b.clear();
+    for(int i=0;i<a.size();i++)
+    {  
+          if(a[i]>=0)
+          flag=1;
+    }
+    if(flag==0)
+    return b;
+    for(int i=0;i<a.size();i++)
+    {    
+        if(a[i]<0)
+        {
+            max_end_here=0;
+            l=i+1;
+            countt=0;
+    
+        }
+        else
+        {
+           max_end_here+=a[i];
+           countt++;
+         
+           
+        }
+           if(max_so_far<max_end_here || (max_so_far==max_end_here && countt>b.size() ) /*|| (max_so_far==max_end_here && countt==b.size() && a[l]<b[0] && max_end_here!=0)*/ )
+           {
+               max_so_far=max_end_here;
+               if(a[l-1]<0 && i>1)
+               {    b.clear();
+                   for(int j=l;j<=i;j++)
+                   b.push_back(a[j]);
+               }
+               else
+               b.push_back(a[i]);
+                
+              
+           }
+    }
+    return b;
+}
+
