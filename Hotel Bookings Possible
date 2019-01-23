@@ -1,0 +1,27 @@
+bool Solution::hotel(vector<int> &arrival, vector<int> &departure, int k) {
+     vector<pair<int, int> > ans; 
+    int  n=arrival.size();
+    for(int i=0;i<n;i++)
+    {
+        ans.push_back(make_pair(arrival[i],1));
+        ans.push_back(make_pair(departure[i],0));
+    }
+    int cur=0,maxx=0;
+    sort(ans.begin(),ans.end());
+    for(int i=0;i<ans.size();i++)
+    {
+        if(ans[i].second==1)
+        {
+            cur++;
+            maxx=max(maxx,cur);
+            if(maxx>k)
+            return 0;
+        }
+        else
+        cur--;
+    }
+    if(maxx>k)
+            return 0;
+    else
+    return 1;
+}
