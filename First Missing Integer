@@ -1,0 +1,21 @@
+int Solution::firstMissingPositive(vector<int> &a) {
+    if(a.empty())
+    return 1;int i;
+    for(i=0;i<a.size();i++)
+    {
+        if(a[i]<=0)
+        a[i]=INT_MAX;
+    }
+    
+     sort(a.begin(),a.end());
+     for(int i=0;i<a.size();i++)
+    {
+        if(a[i]==i+1)
+        continue;
+        else
+        return i+1;
+    }
+    return i+1;
+    
+    
+}
