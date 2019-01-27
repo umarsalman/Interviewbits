@@ -1,0 +1,62 @@
+/**
+ * Definition for an interval.
+ * struct Interval {
+ *     int start;
+ *     int end;
+ *     Interval() : start(0), end(0) {}
+ *     Interval(int s, int e) : start(s), end(e) {}
+ * };
+ */
+vector<Interval> Solution::insert(vector<Interval> &intervals, Interval newInterval) {
+   int a,b,c,d;vector<Interval> inter;int fir=INT_MAX,sec=INT_MIN;
+   newInterval.start=min(newInterval.start,newInterval.end);
+   newInterval.end=max(newInterval.start,newInterval.end);
+   
+    if(intervals.empty())
+   {
+       inter.push_back(Interval(newInterval.start,newInterval.end));
+       return inter;
+   }
+   
+   if(newInterval.end<intervals[0].start)
+   inter.push_back(Interval(newInterval.start,newInterval.end));
+  
+   
+   int i;int flag=0;
+    for(i=0;i<intervals.size();i++)
+    {    
+        a=intervals[i].start;
+        b=intervals[i].end;
+        c=newInterval.start;
+        d=newInterval.end;
+        if(max(a,c) > min(b,d))
+        {
+            inter.push_back(Interval(a,b));
+        }
+        
+        else
+        {
+            fir=min(fir,a);
+            fir=min(fir,c);
+            if(d>=a && d<=b || (d>b && i==intervals.size()-1) || (d>b && i<intervals.size()-1 && d<intervals[i+1].start))
+            {
+                sec=max(d,b);
+                flag=1;
+            }
+          }
+        if(sec!=INT_MIN && flag==1)
+        {
+            inter.push_back(Interval(fir,sec));
+            flag=0;
+        }
+        if(c>b && d<intervals[i+1].start && i<intervals.size()-1)
+        {
+            inter.push_back(Interval(newInterval.start,newInterval.end));
+        }
+    }
+   
+   if(newInterval.start>intervals[i-1].end)
+   inter.push_back(Interval(newInterval.start,newInterval.end)); 
+   
+    return inter;
+}
