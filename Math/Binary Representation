@@ -1,0 +1,15 @@
+string Solution::findDigitsInBinary(int a) {
+    string s="";
+    if(a==0)
+    {
+        s=s+"0";
+        return s;
+    }
+    while(a>0)
+    {
+        int r=a%2;
+        a=a/2;
+        s=to_string(r)+s;
+    }
+    return s;
+}
