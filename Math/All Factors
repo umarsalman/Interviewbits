@@ -1,0 +1,24 @@
+vector<int> Solution::allFactors(int a) {
+    vector<int> ans1,ans2;
+    if(a==1)
+    {
+        ans1.push_back(1);
+        return ans1;
+    }
+    for(int i=1;i<=sqrt(a);i++)
+    {
+        if(a%i==0)
+        {
+            ans1.push_back(i);
+            if(i==a/i)
+            continue;
+            ans2.push_back(a/i);
+        }
+        
+    }
+    for(int i=ans2.size()-1;i>=0;i--)
+    {
+        ans1.push_back(ans2[i]);
+    }
+    return ans1;
+}
