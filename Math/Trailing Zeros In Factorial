@@ -1,0 +1,14 @@
+int Solution::trailingZeroes(int a) {
+    int sum=0,d=5;
+    if(a<5)
+    return 0;
+    else
+    {
+        while(d<=a)
+        {
+            sum+=a/d;
+            d*=5;
+        }
+    }
+    return sum;
+}
