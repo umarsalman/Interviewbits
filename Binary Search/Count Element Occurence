@@ -1,0 +1,16 @@
+int Solution::findCount(const vector<int> &a, int b) {
+   
+   
+   if(lower_bound(a.begin(),a.end(),b)==a.end())
+   return 0;
+   int i1= lower_bound(a.begin(),a.end(),b)-a.begin();
+   if(upper_bound(a.begin(),a.end(),b)==a.end())
+   return (a.size()-i1);
+   int i2= upper_bound(a.begin(),a.end(),b)-a.begin();
+   if(a[i1]==a[i2])
+   {
+       return 0;
+   }
+ 
+   return (i2-i1);
+}
