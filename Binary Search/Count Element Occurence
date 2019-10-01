@@ -13,4 +13,5 @@ int Solution::findCount(const vector<int> &a, int b) {
    }
  
    return (i2-i1);
+   //Finish
 }
