@@ -1,3 +1,4 @@
+//This program does not contains main
 vector<vector<int> > Solution::diagonal(vector<vector<int> > &a) {
     int n = a.size();
     vector<vector<int> > b(2*n-1);
@@ -25,4 +26,4 @@ vector<vector<int> > Solution::diagonal(vector<vector<int> > &a) {
         return b;
     
 }
-
+//Finish
