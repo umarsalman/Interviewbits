@@ -17,4 +17,5 @@ vector<int> Solution::wave(vector<int> &a) {
         a[i+1]=temp; 
     }
     return a;
+    return
 }
