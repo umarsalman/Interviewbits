@@ -28,3 +28,4 @@ string Solution::longestCommonPrefix(vector<string> &a) {
     }
     return ans;
 }
+//Finish
